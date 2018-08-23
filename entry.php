@@ -56,10 +56,20 @@ $appInfo = mysql_fetch_object($getApp);
 						var d = new Date($.now());
 						$('.lastsaved').text('Last saved: ' + d.toTimeString());
 					}
-					});	
+				});	
 		    }, 5000);
 		});
 		$('textarea').focusout(function() {
+			$.ajax({
+			    type: "POST",
+			    url: "../../savecomment.php",
+			    data: { id: <?=$id?>, body: $("textarea").val() },
+				success: function(response) {
+					console.log(response);
+					var d = new Date($.now());
+					$('.lastsaved').text('Last saved: ' + d.toTimeString());
+				}
+			});	
 			clearInterval(timerId);
 		});
 	});
@@ -96,6 +106,7 @@ $appInfo = mysql_fetch_object($getApp);
 
 			<!-- main content -->
 			<div class="col-sm container" style="padding: 0px;">
+				<div class="note-text">Company Notes</div>
 				<textarea><?=$appInfo->notes?></textarea>
 				<div class='lastsaved'>Last saved: never</div>
 			</div>
