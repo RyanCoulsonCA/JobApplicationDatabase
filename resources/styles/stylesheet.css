@@ -15,12 +15,10 @@ body {
 	color: white;
 	font-family: 'Open Sans';
 	font-weight: 300;
+	font-size: 15px;
 }
 
-.navigation {
-	position: fixed;
-	top: 0px;
-	left: 0px;
+.top-navigation {
 	width: 100%;
 	padding: 0px;
 
@@ -29,38 +27,37 @@ body {
 
 	z-index: 1;
 }
-.navigation img {
+.top-navigation img {
 	display: inline;
 	height: 50px;
 	filter: brightness(1.25);
 	margin: 10px;
 	margin-right: 20px;
 }
-.navigation .btn {
+.top-navigation .nav-btn {
 	display: inline-block;
 	float: right;
 
 	padding: 24px 40px 24px 40px;
 	background: rgba(40, 40, 40, 1);
 }
-.navigation .btn:hover {
+.top-navigation .nav-btn:hover {
 	background: rgba(70, 70, 70, 1);
 	cursor: pointer;
 }
-.navigation .btn i {
+.top-navigation .nav-btn i {
 	margin-right: 10px;
 	font-size: 20px;
 }
 .side-container {
+	display: inline-block;
 	background: #222222;
 	padding: 30px;
-	padding-top: 85px;
 	text-align: center;
+	width: 20vw;
+	height: 90vh;
 
-	width: 15vw;
-	height: 100vh;
-
-	box-shadow: 2px 0px 5px #000;
+	box-shadow: 2px 2px 5px #000;
 	z-index: 0;
 }
 .side-container input {
@@ -83,10 +80,24 @@ body {
 	background: rgba(40, 40, 40, 1);
 	color: rgba(85, 85, 85, 1);
 }
+.side-container h3 {
+	font-size: 18px;
+	font-weight: 700;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.container {
+	display: inline-block;
+	padding: 30px;
+	height: 90vh;
+}
+
 /* qs = quick search */
 .qs-option {
+	width: 100%;
 	text-align: left;
 	margin-bottom:5px;
+	margin-left: -15px;
 	padding: 5px 15px 5px 15px;
 	cursor: pointer;
 }
@@ -97,6 +108,15 @@ body {
 	font-size: 14px;
 }
 .qs-number {
+	float:right;
+	display: inline;
 	color: rgba(85,85,85,1);
-	float: right;
+}
+
+@media (max-width: 1600px) {
+	/* if the float is going to be messed up, there's
+	no point in showing it, it's only quality of life */
+	.qs-number {
+		display: none;
+	}
 }
