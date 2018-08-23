@@ -9,8 +9,35 @@
 		<!-- favicon -->
 		<link rel="shortcut icon" type="image/png" href="resources/media/ryan-coulson-logo3.png"/>
 
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
 		<!-- fort awesome icons -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+<script>
+	// Awesome live search function retrieved from https://jsfiddle.net/umaar/t82gZ/
+	$(document).ready(function(){
+	    $("#filter").keyup(function(){
+	        // Retrieve the input field text and reset the count to zero
+	        var filter = $(this).val();
+	 
+	        // Loop through the comment list
+	        $(".job-section").each(function(){
+	 
+	            // If the list item does not contain the text phrase fade it out
+	            if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+	                $(this).fadeOut();
+	 
+	            // Show the list item if the phrase matches and increase the count by 1
+	            } else {
+	                $(this).show();
+	            }
+	        });
+	    });
+	});
+	</script>
 	</head>
 	<body>
 
@@ -25,7 +52,7 @@
 
 			<!-- side navigation -->
 			<div class="col-sm-3 side-container">
-				<input type="text" name="query" placeholder="Enter Query" autocomplete="off" />
+				<input type="text" name="query" id="filter" placeholder="Enter Query" autocomplete="off" />
 
 				<h3>Quick Position Search</h3>
 				<div class="qs-option">
@@ -59,8 +86,16 @@
 						<td class="col-sm-2 job-center">08/23/2018</td>
 						<td class="col-sm-1 job-complete"><i class="fa fa-check"></i></td>
 					</tr>
+					<tr class="row job-section">
+						<td class="col-sm-6">Amazon</td>
+						<td class="col-sm-3 job-center">Software Engineering Intern</td>
+						<td class="col-sm-2 job-center">08/23/2018</td>
+						<td class="col-sm-1 job-complete"><i class="fa fa-check"></i></td>
+					</tr>
 				</table>
 			</div>
 		</div>
 	</body>
+
+	
 </html>
