@@ -1,3 +1,7 @@
+<?php
+require_once "connect.php";
+?>
+
 <html lang="en-US">
 	<head>
 		<title>Job Application Database</title>
@@ -19,6 +23,27 @@
 <script>
 	// Awesome live search function retrieved from https://jsfiddle.net/umaar/t82gZ/
 	$(document).ready(function(){
+
+		// Count position occurences
+		$(".qs-option").each(function(){
+			var count = 0;
+			var position = $(this).children('.qs-position').text();
+
+			if(position == "All") {
+				position = "";
+			}
+
+		    $(".job-section").each(function(){
+		        // If the list item does not contain the text phrase fade it out
+		        if ($(this).text().search(new RegExp(position, "i")) >= 0) {
+		            count++;
+
+		        // Show the list item if the phrase matches and increase the count by 1
+		        }
+		    });
+		    $(this).children('.qs-number').text("("+count+")");
+		 });
+
 	    $("#filter").keyup(function(){
 	        // Retrieve the input field text and reset the count to zero
 	        var filter = $(this).val();
@@ -40,6 +65,10 @@
 	    $(".qs-option").click(function(){
 	        // Retrieve the input field text and reset the count to zero
 	        var position = $(this).children('.qs-position').text();
+
+	        if(position == "All") {
+	        	position = "";
+	        }
 
 			// Loop through the comment list
 	        $(".job-section").each(function(){
@@ -74,12 +103,16 @@
 
 				<h3>Quick Position Search</h3>
 				<div class="qs-option">
+					<span class="qs-position">All</span>
+					<div class="qs-number"></div>
+				</div>
+				<div class="qs-option">
 					<span class="qs-position">Software Engineering Intern</span>
-					<div class="qs-number">(1)</div>
+					<div class="qs-number"></div>
 				</div>
 				<div class="qs-option">
 					<span class="qs-position">Graphic Design Intern</span>
-					<span class="qs-number">(1)</span>
+					<span class="qs-number"></span>
 				</div>
 			</div>
 
@@ -92,24 +125,42 @@
 						<td class="col-sm-2 job-date">Application Date</td>
 						<td class="col-sm-1">Complete</td>
 					</tr>
-					<tr class="row job-section">
-						<td class="col-sm-6">Google</td>
-						<td class="col-sm-3 job-center">Software Engineering Intern</td>
-						<td class="col-sm-2 job-center">08/23/2018</td>
-						<td class="col-sm-1 job-complete"><i class="fa fa-check"></i></td>
+
+			<?php
+			$fetchApplications = mysql_query("SELECT * FROM `application` WHERE `archived`='0'");
+			$countApps = mysql_num_rows($fetchApplications);
+
+			if($countApps == 0) {
+				echo "
+					</table>
+					<center>Nothing seems to be here.</center>
+				";
+			}
+
+			while($appInfo = mysql_fetch_object($fetchApplications)) {
+				echo "
+					<tr class='row job-section'>
+						<td class='col-sm-6'>$appInfo->company_name</td>
+						<td class='col-sm-3 job-center'>$appInfo->position</td>
+						<td class='col-sm-2 job-center'>".date("m/d/Y", $appInfo->timestamp)."</td>
+				";
+
+				if($appInfo->complete) {
+					echo "
+						<td class='col-sm-1 job-complete'><i class='fa fa-check'></i></td>
+					";					
+				} else {
+					echo "
+						<td class='col-sm-1 job-complete'></td>
+					";				
+				}
+
+
+				echo "
 					</tr>
-					<tr class="row job-section">
-						<td class="col-sm-6">Google</td>
-						<td class="col-sm-3 job-center">Software Engineering Intern</td>
-						<td class="col-sm-2 job-center">08/23/2018</td>
-						<td class="col-sm-1 job-complete"><i class="fa fa-check"></i></td>
-					</tr>
-					<tr class="row job-section">
-						<td class="col-sm-6">Amazon</td>
-						<td class="col-sm-3 job-center">Graphic Design Intern</td>
-						<td class="col-sm-2 job-center">08/23/2018</td>
-						<td class="col-sm-1 job-complete"><i class="fa fa-check"></i></td>
-					</tr>
+				";
+			}
+			?>
 				</table>
 			</div>
 		</div>
