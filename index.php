@@ -36,6 +36,24 @@
 	            }
 	        });
 	    });
+
+	    $(".qs-option").click(function(){
+	        // Retrieve the input field text and reset the count to zero
+	        var position = $(this).children('.qs-position').text();
+
+			// Loop through the comment list
+	        $(".job-section").each(function(){
+	 
+	            // If the list item does not contain the text phrase fade it out
+	            if ($(this).text().search(new RegExp(position, "i")) < 0) {
+	                $(this).fadeOut();
+	 
+	            // Show the list item if the phrase matches and increase the count by 1
+	            } else {
+	                $(this).show();
+	            }
+	        });
+	    });
 	});
 	</script>
 	</head>
@@ -88,7 +106,7 @@
 					</tr>
 					<tr class="row job-section">
 						<td class="col-sm-6">Amazon</td>
-						<td class="col-sm-3 job-center">Software Engineering Intern</td>
+						<td class="col-sm-3 job-center">Graphic Design Intern</td>
 						<td class="col-sm-2 job-center">08/23/2018</td>
 						<td class="col-sm-1 job-complete"><i class="fa fa-check"></i></td>
 					</tr>
