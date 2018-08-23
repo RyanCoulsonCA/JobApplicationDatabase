@@ -89,6 +89,12 @@ body {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+.side-container h4 {
+	font-size: 16px;
+	font-weight: 700;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
 .container {
 	display: inline-block;
 	padding: 30px;
@@ -105,6 +111,28 @@ body {
 	background: rgba(85, 85, 85,.4);
 }
 .container::-webkit-scrollbar-thumb:hover {
+	background: rgba(60, 60, 60,.4);
+}
+.container textarea {
+	background: rgba(0,0,0,0);
+	color: white;
+
+	border: 0px;
+	resize: none;
+	width: 100%;
+	height: 80%;
+	padding: 10px;
+}
+.container textarea::-webkit-scrollbar {
+	width: 20px;
+}
+.container textarea::-webkit-scrollbar-track {
+	background: rgba(0,0,0,.4);
+}
+.container textarea::-webkit-scrollbar-thumb {
+	background: rgba(85, 85, 85,.4);
+}
+.container textarea::-webkit-scrollbar-thumb:hover {
 	background: rgba(60, 60, 60,.4);
 }
 
@@ -156,6 +184,41 @@ body {
 .job-complete {
 	text-align: center;
 	font-size: 20px;
+}
+.title-text {
+	font-weight: 700;
+	text-transform: uppercase;
+	color: rgba(80,80,80,1);
+	font-size: 12px;
+	margin: 10px;
+}
+
+.custom-btn {
+    padding: 10px 20px 10px 20px;
+    display: inline-block;  
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    text-transform:uppercase;
+    margin: 5px;
+}
+.custom-btn:hover {
+	cursor: pointer;
+}
+.btn-blue {
+    background-color: #9F8FFF;
+}
+.btn-blue:hover {
+    background-color: #7f74cc;
+}
+.btn-red {
+    background-color: #FE816D;
+}
+.btn-red:hover {
+    background-color: #c66859;
+}
+.lastsaved {
+	padding: 10px;
 }
 
 @media (max-width: 1600px) {

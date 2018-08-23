@@ -23,6 +23,10 @@ require_once "connect.php";
 <script>
 	// Awesome live search function retrieved from https://jsfiddle.net/umaar/t82gZ/
 	$(document).ready(function(){
+		// allows table rows to be clicked on as a link
+	    $(".item-clickable").click(function() {
+	        window.location = $(this).data("href");
+	    });
 
 		// Count position occurences
 		$(".qs-option").each(function(){
@@ -49,15 +53,15 @@ require_once "connect.php";
 	        var filter = $(this).val();
 	 
 	        // Loop through the comment list
-	        $(".job-section").each(function(){
+	        $(".job-section #name").each(function(){
 	 
 	            // If the list item does not contain the text phrase fade it out
 	            if ($(this).text().search(new RegExp(filter, "i")) < 0) {
-	                $(this).fadeOut();
+	                $(this).parent().fadeOut();
 	 
 	            // Show the list item if the phrase matches and increase the count by 1
 	            } else {
-	                $(this).show();
+	                $(this).parent().show();
 	            }
 	        });
 	    });
@@ -101,7 +105,7 @@ require_once "connect.php";
 			<div class="col-sm-3 side-container">
 				<input type="text" name="query" id="filter" placeholder="Enter Query" autocomplete="off" />
 
-				<h3>Quick Position Search</h3>
+				<h3>Position Filter</h3>
 				<div class="qs-option">
 					<span class="qs-position">All</span>
 					<div class="qs-number"></div>
@@ -139,8 +143,8 @@ require_once "connect.php";
 
 			while($appInfo = mysql_fetch_object($fetchApplications)) {
 				echo "
-					<tr class='row job-section'>
-						<td class='col-sm-6'>$appInfo->company_name</td>
+					<tr class='row job-section item-clickable' data-href='app/$appInfo->id/'>
+						<td class='col-sm-6' id='name'>$appInfo->company_name</td>
 						<td class='col-sm-3 job-center'>$appInfo->position</td>
 						<td class='col-sm-2 job-center'>".date("m/d/Y", $appInfo->timestamp)."</td>
 				";
