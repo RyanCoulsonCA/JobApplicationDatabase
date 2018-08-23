@@ -52,7 +52,6 @@ body {
 	font-size: 20px;
 }
 .side-container {
-	position: fixed;
 	background: #222222;
 	padding: 30px;
 	padding-top: 85px;
@@ -65,8 +64,8 @@ body {
 	z-index: 0;
 }
 .side-container input {
-	width: 100%;
 	background: rgba(21, 21, 21, .48);
+	width: 100%;
 	border: 0px;
 
 	padding: 10px 20px 10px 20px;
@@ -83,4 +82,21 @@ body {
 	outline: 0px;
 	background: rgba(40, 40, 40, 1);
 	color: rgba(85, 85, 85, 1);
+}
+/* qs = quick search */
+.qs-option {
+	text-align: left;
+	margin-bottom:5px;
+	padding: 5px 15px 5px 15px;
+	cursor: pointer;
+}
+.qs-option:hover {
+	background: rgba(50,50,50,1);
+}
+.qs-positon {
+	font-size: 14px;
+}
+.qs-number {
+	color: rgba(85,85,85,1);
+	float: right;
 }

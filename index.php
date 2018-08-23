@@ -22,6 +22,16 @@
 		<!-- side navigation -->
 		<div class="side-container">
 			<input type="text" name="query" placeholder="Enter Query" autocomplete="off" />
+
+			<h3>Quick Search</h3>
+			<div class="qs-option">
+				<span class="qs-position">Software Engineering Intern</span>
+				<span class="qs-number">(1)</span>
+			</div>
+			<div class="qs-option">
+				<span class="qs-position">Graphic Design Intern</span>
+				<span class="qs-number">(1)</span>
+			</div>
 		</div>
 	</body>
 </html>
