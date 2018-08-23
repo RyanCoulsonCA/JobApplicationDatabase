@@ -22,7 +22,7 @@ body {
 	top: 0px;
 	left: 0px;
 	width: 100%;
-	padding: 10px;
+	padding: 0px;
 
 	background: #333333;
 	box-shadow: 0px 2px 5px #000;
@@ -33,7 +33,23 @@ body {
 	display: inline;
 	height: 50px;
 	filter: brightness(1.25);
+	margin: 10px;
 	margin-right: 20px;
+}
+.navigation .btn {
+	display: inline-block;
+	float: right;
+
+	padding: 24px 40px 24px 40px;
+	background: rgba(40, 40, 40, 1);
+}
+.navigation .btn:hover {
+	background: rgba(70, 70, 70, 1);
+	cursor: pointer;
+}
+.navigation .btn i {
+	margin-right: 10px;
+	font-size: 20px;
 }
 .side-container {
 	position: fixed;
