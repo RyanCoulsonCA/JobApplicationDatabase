@@ -161,6 +161,9 @@ body {
 	padding: 5px 10px 5px 10px;
 	margin-left: 10px;
 }
+.form-section {
+	margin: 0 auto;
+}
 
 /* upload resume */
 .new-item-container .upload-btn {
@@ -168,15 +171,13 @@ body {
 	position: relative;
 
 	border: 1px solid rgba(30, 30, 30, 1);
-	background: rgba(60, 60, 60, .5);
 	color: rgba(255, 255, 255, .5);
 
-	width: 200px;
+	width: 300px;
 	margin-top: 10px;
 	text-align: center;
 }
 .new-item-container .upload-btn:hover {
-	background: rgba(80, 80, 80, .5);
 	color: rgba(255, 255, 255, .5);
 }
 .new-item-container .upload-btn button {
@@ -209,6 +210,9 @@ body {
 	color: rgba(255, 255, 255, 1);
 	padding: 10px;
 	cursor:pointer;
+}
+.upload-btn-dim {
+	filter: brightness(.5);
 }
 
 

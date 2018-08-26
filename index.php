@@ -117,13 +117,13 @@ require_once "connect.php";
 					if(response.substring(0,7) == "success") {
 						var btn = $("#resume-btn");
 						btn.addClass("upload-success");
-						btn.html("<i class='fas fa-check'></i> Uploaded");
-						
+						btn.html("<i class='fas fa-check'></i> View Resume");
+
 						// Set location to the newly uploaded file
 						btn.data("href", response.substring(7, response.length+1));
 					} else {
 						alert(response);
-						$("#resume-label").html("Upload Resume");
+						$("#resume-label").html("<i class='fas fa-upload'></i> Upload Resume");
 					}
 					
 				}
@@ -155,13 +155,13 @@ require_once "connect.php";
 					if(response == "success") {
 						var btn = $("#cv-btn");
 						btn.addClass("upload-success");
-						btn.html("<i class='fas fa-check'></i> Uploaded");
+						btn.html("<i class='fas fa-check'></i> View CV");
 
 						// Set location to the newly uploaded file
 						btn.data("href", response.substring(7, response.length+1));
 					} else {
 						alert(response);
-						$("#cv-label").html("Upload CV");
+						$("#cv-label").html("<i class='fas fa-upload'></i> Upload CV");
 					}
 					
 				}
@@ -218,15 +218,17 @@ require_once "connect.php";
 							</div>
 						</div>
 						<!-- <i class="fas fa-spin fa-spinner"></i> -->
-						<div class="upload-btn item-clickable" data-href="#" id="resume-btn">
-							<button id='resume-label'>Upload Resume</button>
-							<input type="file" id="upload-resume" name="test"/>
-						</div>
+						<center>
+							<div class="upload-btn btn-blue item-clickable" data-href="#" id="resume-btn">
+								<button id='resume-label'><i class='fas fa-upload'></i> Upload Resume</button>
+								<input type="file" id="upload-resume" name="test"/>
+							</div>
 
-						<div class="upload-btn item-clickable" data-href="#" id="cv-btn">
-							<button id='cv-label'>Upload CV</button>
-							<input type="file" id="upload-cv" name="test"/>
-						</div>
+							<div class="upload-btn btn-red item-clickable" data-href="#" id="cv-btn">
+								<button id='cv-label'><i class='fas fa-upload'></i> Upload CV</button>
+								<input type="file" id="upload-cv" name="test"/>
+							</div>
+						</center>
 					</form>
 				</div>
 
