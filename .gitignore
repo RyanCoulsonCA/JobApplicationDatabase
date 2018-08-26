@@ -1,1 +1,6 @@
 connect.php
+.ftpconfig
+.ftpquota
+.*
+error_log
+sftp-config.json

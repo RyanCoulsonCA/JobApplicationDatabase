@@ -87,6 +87,10 @@ require_once "connect.php";
 	            }
 	        });
 	    });
+
+	    $("#add-item").click(function() {
+	    	$(".new-item-container").slideToggle();
+	    });
 	});
 	</script>
 	</head>
@@ -95,7 +99,7 @@ require_once "connect.php";
 		<!-- top navigation -->
 		<div class="top-navigation">
 			<img src="resources/media/ryan-coulson-logo3.png" />
-			<div class="nav-btn"><i class="fa fa-file"></i>Add New</div>
+			<div class="nav-btn" id="add-item"><i class="fa fa-file"></i>Add New</div>
 		</div>
 
 		
@@ -120,52 +124,64 @@ require_once "connect.php";
 				</div>
 			</div>
 
-			<!-- main content -->
-			<div class="col-sm container">
-				<table style="width: 100%;">
-					<tr class="row job-header">
-						<td class="col-sm-6">Company Name</td>
-						<td class="col-sm-3">Position</td>
-						<td class="col-sm-2 job-date">Application Date</td>
-						<td class="col-sm-1">Complete</td>
-					</tr>
+			<!-- main container -->
+			<div class="col-sm container" style="margin:0px;padding:0px;">
+				<!-- slide down panel -->
+				<div class="new-item-container">
+					<h3>Add New Application</h3>
+					<div class="row">
+						<div class="col-sm"></div>
+						<div class="col-sm"></div>
+					</div>
+				</div>
 
-			<?php
-			$fetchApplications = mysql_query("SELECT * FROM `application` WHERE `archived`='0'");
-			$countApps = mysql_num_rows($fetchApplications);
+				<!-- content -->
+				<div class="content-container">
+					<table style="width: 100%;">
+						<tr class="row job-header">
+							<td class="col-sm-6">Company Name</td>
+							<td class="col-sm-3">Position</td>
+							<td class="col-sm-2 job-date">Application Date</td>
+							<td class="col-sm-1">Complete</td>
+						</tr>
 
-			if($countApps == 0) {
-				echo "
-					</table>
-					<center>Nothing seems to be here.</center>
-				";
-			}
+				<?php
+				$fetchApplications = mysql_query("SELECT * FROM `application` WHERE `archived`='0'");
+				$countApps = mysql_num_rows($fetchApplications);
 
-			while($appInfo = mysql_fetch_object($fetchApplications)) {
-				echo "
-					<tr class='row job-section item-clickable' data-href='app/$appInfo->id/'>
-						<td class='col-sm-6' id='name'>$appInfo->company_name</td>
-						<td class='col-sm-3 job-center'>$appInfo->position</td>
-						<td class='col-sm-2 job-center'>".date("m/d/Y", $appInfo->timestamp)."</td>
-				";
-
-				if($appInfo->complete) {
+				if($countApps == 0) {
 					echo "
-						<td class='col-sm-1 job-complete'><i class='fa fa-check'></i></td>
-					";					
-				} else {
-					echo "
-						<td class='col-sm-1 job-complete'></td>
-					";				
+						</table>
+						<center>Nothing seems to be here.</center>
+					";
 				}
 
+				while($appInfo = mysql_fetch_object($fetchApplications)) {
+					echo "
+						<tr class='row job-section item-clickable' data-href='app/$appInfo->id/'>
+							<td class='col-sm-6' id='name'>$appInfo->company_name</td>
+							<td class='col-sm-3 job-center'>$appInfo->position</td>
+							<td class='col-sm-2 job-center'>".date("m/d/Y", $appInfo->timestamp)."</td>
+					";
 
-				echo "
-					</tr>
-				";
-			}
-			?>
-				</table>
+					if($appInfo->complete) {
+						echo "
+							<td class='col-sm-1 job-complete'><i class='fa fa-check'></i></td>
+						";					
+					} else {
+						echo "
+							<td class='col-sm-1 job-complete'></td>
+						";				
+					}
+
+
+					echo "
+						</tr>
+					";
+				}
+				?>
+					</table>
+				</div>
 			</div>
 		</div>
 	</body>
