@@ -91,6 +91,14 @@ require_once "connect.php";
 	    $("#add-item").click(function() {
 	    	$(".new-item-container").slideToggle();
 	    });
+
+	    $("#upload-resume").click(function() {
+	    	$(this).html("<i class='fas fa-spin fa-spinner'></i> Upload Resume");
+	    });
+
+	    $("#upload-cv").click(function() {
+	    	$(this).html("<i class='fas fa-spin fa-spinner'></i> Upload CV");
+	    });
 	});
 	</script>
 	</head>
@@ -130,9 +138,18 @@ require_once "connect.php";
 				<div class="new-item-container">
 					<h3>Add New Application</h3>
 					<div class="row">
-						<div class="col-sm"></div>
-						<div class="col-sm"></div>
+						<div class="col-sm">
+							Company Name
+							<input type="text" />
+						</div>
+						<div class="col-sm">
+							Position
+							<input type="text" />
+						</div>
 					</div>
+					<!-- <i class="fas fa-spin fa-spinner"></i> -->
+					<div class="upload-btn" id="upload-resume">Upload Resume</div>
+					<div class="upload-btn" id="upload-cv">Upload CV</div>
 				</div>
 
 				<!-- content -->
