@@ -165,21 +165,37 @@ body {
 /* upload resume */
 .new-item-container .upload-btn {
 	display: inline-block;
-	margin-top: 10px;
-	padding: 15px 30px;
+	position: relative;
 
 	border: 1px solid rgba(30, 30, 30, 1);
 	background: rgba(60, 60, 60, .5);
 	color: rgba(255, 255, 255, .5);
 
-	width: 200px;
+	width: 250px;
+	margin-top: 10px;
 	text-align: center;
+	cursor:pointer;
 }
 .new-item-container .upload-btn:hover {
 	background: rgba(80, 80, 80, .5);
 	color: rgba(255, 255, 255, .5);
-	cursor: pointer;
 }
+.new-item-container .upload-btn button {
+	border: 0px;
+	background: rgba(0,0,0,0);
+	color: white;
+	margin: 0 auto;
+	padding: 15px 30px;
+}
+.new-item-container .upload-btn input[type="file"] {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+	height:100%;
+	width: 100%;
+}
+
 .new-item-container .upload-btn i {
 	margin-right: 10px;
 }

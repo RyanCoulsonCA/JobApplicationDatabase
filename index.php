@@ -92,12 +92,12 @@ require_once "connect.php";
 	    	$(".new-item-container").slideToggle();
 	    });
 
-	    $("#upload-resume").click(function() {
-	    	$(this).html("<i class='fas fa-spin fa-spinner'></i> Upload Resume");
+	    $("#upload-resume").on('change', function() {
+	    	$("#resume-label").html("<i class='fas fa-spin fa-spinner'></i> Uploading...");
 	    });
 
-	    $("#upload-cv").click(function() {
-	    	$(this).html("<i class='fas fa-spin fa-spinner'></i> Upload CV");
+	    $("#upload-cv").on('change', function() {
+	    	$("#cv-label").html("<i class='fas fa-spin fa-spinner'></i> Uploading...");
 	    });
 	});
 	</script>
@@ -148,8 +148,15 @@ require_once "connect.php";
 						</div>
 					</div>
 					<!-- <i class="fas fa-spin fa-spinner"></i> -->
-					<div class="upload-btn" id="upload-resume">Upload Resume</div>
-					<div class="upload-btn" id="upload-cv">Upload CV</div>
+					<div class="upload-btn">
+						<button id='resume-label'>Upload Resume</button>
+						<input type="file" id="upload-resume" name="test"/>
+					</div>
+
+					<div class="upload-btn">
+						<button id='cv-label'>Upload CV</button>
+						<input type="file" id="upload-cv" name="test"/>
+					</div>
 				</div>
 
 				<!-- content -->
