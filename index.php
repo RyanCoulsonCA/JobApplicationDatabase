@@ -94,10 +94,78 @@ require_once "connect.php";
 
 	    $("#upload-resume").on('change', function() {
 	    	$("#resume-label").html("<i class='fas fa-spin fa-spinner'></i> Uploading...");
+
+	    	var formData = new FormData();
+	    	var fileInput = document.getElementById("upload-resume");
+	    	var file = fileInput.files[0];
+	    	formData.append('file', file);
+	    	formData.append('type', 'resume')
+
+			$.ajax({
+			    // Your server script to process the upload
+			    type: "POST",
+			    url: "uploadfile.php",
+
+			    // Form data
+			    data: formData,
+
+		        cache: false,
+		        contentType: false,
+		        processData: false,
+
+				success: function(response) {
+					if(response.substring(0,7) == "success") {
+						var btn = $("#resume-btn");
+						btn.addClass("upload-success");
+						btn.html("<i class='fas fa-check'></i> Uploaded");
+						
+						// Set location to the newly uploaded file
+						btn.data("href", response.substring(7, response.length+1));
+					} else {
+						alert(response);
+						$("#resume-label").html("Upload Resume");
+					}
+					
+				}
+			});
 	    });
 
 	    $("#upload-cv").on('change', function() {
 	    	$("#cv-label").html("<i class='fas fa-spin fa-spinner'></i> Uploading...");
+
+			var formData = new FormData();
+	    	var fileInput = document.getElementById("upload-cv");
+	    	var file = fileInput.files[0];
+	    	formData.append('file', file);
+	    	formData.append('type', 'cv')
+
+			$.ajax({
+			    // Your server script to process the upload
+			    type: "POST",
+			    url: "uploadfile.php",
+
+			    // Form data
+			    data: formData,
+
+		        cache: false,
+		        contentType: false,
+		        processData: false,
+
+				success: function(response) {
+					if(response == "success") {
+						var btn = $("#cv-btn");
+						btn.addClass("upload-success");
+						btn.html("<i class='fas fa-check'></i> Uploaded");
+
+						// Set location to the newly uploaded file
+						btn.data("href", response.substring(7, response.length+1));
+					} else {
+						alert(response);
+						$("#cv-label").html("Upload CV");
+					}
+					
+				}
+			});
 	    });
 	});
 	</script>
@@ -137,26 +205,29 @@ require_once "connect.php";
 				<!-- slide down panel -->
 				<div class="new-item-container">
 					<h3>Add New Application</h3>
-					<div class="row">
-						<div class="col-sm">
-							Company Name
-							<input type="text" />
-						</div>
-						<div class="col-sm">
-							Position
-							<input type="text" />
-						</div>
-					</div>
-					<!-- <i class="fas fa-spin fa-spinner"></i> -->
-					<div class="upload-btn">
-						<button id='resume-label'>Upload Resume</button>
-						<input type="file" id="upload-resume" name="test"/>
-					</div>
 
-					<div class="upload-btn">
-						<button id='cv-label'>Upload CV</button>
-						<input type="file" id="upload-cv" name="test"/>
-					</div>
+					<form enctype="multipart/form-data">
+						<div class="row">
+							<div class="col-sm">
+								Company Name
+								<input type="text" />
+							</div>
+							<div class="col-sm">
+								Position
+								<input type="text" />
+							</div>
+						</div>
+						<!-- <i class="fas fa-spin fa-spinner"></i> -->
+						<div class="upload-btn item-clickable" data-href="#" id="resume-btn">
+							<button id='resume-label'>Upload Resume</button>
+							<input type="file" id="upload-resume" name="test"/>
+						</div>
+
+						<div class="upload-btn item-clickable" data-href="#" id="cv-btn">
+							<button id='cv-label'>Upload CV</button>
+							<input type="file" id="upload-cv" name="test"/>
+						</div>
+					</form>
 				</div>
 
 				<!-- content -->

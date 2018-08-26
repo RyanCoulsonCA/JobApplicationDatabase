@@ -171,10 +171,9 @@ body {
 	background: rgba(60, 60, 60, .5);
 	color: rgba(255, 255, 255, .5);
 
-	width: 250px;
+	width: 200px;
 	margin-top: 10px;
 	text-align: center;
-	cursor:pointer;
 }
 .new-item-container .upload-btn:hover {
 	background: rgba(80, 80, 80, .5);
@@ -185,7 +184,7 @@ body {
 	background: rgba(0,0,0,0);
 	color: white;
 	margin: 0 auto;
-	padding: 15px 30px;
+	padding: 10px;
 }
 .new-item-container .upload-btn input[type="file"] {
 	position: absolute;
@@ -203,7 +202,15 @@ body {
 .new-item-container .upload-success {
 	background: rgba(0, 155, 0, 1);
 	color: rgba(255, 255, 255, 1);
+	padding: 10px;
 }
+.new-item-container .upload-success:hover {
+	background: rgba(0, 155, 0, 1);
+	color: rgba(255, 255, 255, 1);
+	padding: 10px;
+	cursor:pointer;
+}
+
 
 /* qs = quick search */
 .qs-option {
