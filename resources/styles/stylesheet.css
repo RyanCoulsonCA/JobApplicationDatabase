@@ -148,7 +148,6 @@ body {
 	font-weight: 700;
 	margin: 10px 5px 10px 5px;
 	font-size: 18px;
-	text-align: center;
 }
 .new-item-container input {
 	background: rgba(60, 60, 60, .5);
@@ -157,9 +156,9 @@ body {
 	font-size: 14px;
 	color: rgba(255,255,255,1);
 
-	width: 80%;
+	width: 70%;
 	padding: 5px 10px 5px 10px;
-	margin-left: 10px;
+	margin-left: 5px;
 }
 .form-section {
 	margin: 0 auto;
@@ -173,8 +172,7 @@ body {
 	border: 1px solid rgba(30, 30, 30, 1);
 	color: rgba(255, 255, 255, .5);
 
-	width: 300px;
-	margin-top: 10px;
+	width: 80px;
 	text-align: center;
 }
 .new-item-container .upload-btn:hover {
@@ -197,11 +195,12 @@ body {
 }
 
 .new-item-container .upload-btn i {
-	margin-right: 10px;
+	display: block;
 }
 
 .new-item-container .upload-success {
-	background: rgba(0, 155, 0, 1);
+	position: relative;
+	display: inline-block;
 	color: rgba(255, 255, 255, 1);
 	padding: 10px;
 }
@@ -211,10 +210,20 @@ body {
 	padding: 10px;
 	cursor:pointer;
 }
-.upload-btn-dim {
-	filter: brightness(.5);
+.new-item-container label {
+	width: 150px;
 }
 
+.icon-text {
+	font-size: 32px;
+}
+.upload-text {
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: 400;
+	letter-spacing: .5;
+	margin-top: 5px;
+}
 
 /* qs = quick search */
 .qs-option {
@@ -302,6 +311,13 @@ body {
 .btn-red:hover {
     background-color: #c66859;
 }
+.btn-green {
+	background-color: rgba(0, 155, 0, 1);
+}
+.btn-green:hover {
+	background-color: rgba(0, 125, 0, 1);
+}
+
 .lastsaved {
 	padding: 10px;
 }

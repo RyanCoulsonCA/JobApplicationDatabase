@@ -92,8 +92,14 @@ require_once "connect.php";
 	    	$(".new-item-container").slideToggle();
 	    });
 
+
+	    // BEGIN UPLOADING
+	    var resume_uploaded, cv_uploaded;
+
+	    $("#upload-submit").hide();
+
 	    $("#upload-resume").on('change', function() {
-	    	$("#resume-label").html("<i class='fas fa-spin fa-spinner'></i> Uploading...");
+	    	$("#resume-label").html("<i class='fas fa-spin fa-spinner icon-text'></i><div class='upload-text'>...</div>");
 
 	    	var formData = new FormData();
 	    	var fileInput = document.getElementById("upload-resume");
@@ -115,15 +121,22 @@ require_once "connect.php";
 
 				success: function(response) {
 					if(response.substring(0,7) == "success") {
-						var btn = $("#resume-btn");
+						var btn = $("#resume-label");
 						btn.addClass("upload-success");
-						btn.html("<i class='fas fa-check'></i> View Resume");
+						btn.html("<i class='fas fa-check icon-text'></i><div class='upload-text'>Resume</div>");
+
+						// check if both have been uploaded
+						resume_uploaded = 1;
+						if(resume_uploaded && cv_uploaded) {
+							$("#upload-submit").fadeIn();
+							resume_uploaded = cv_uploaded = 0;
+						}
 
 						// Set location to the newly uploaded file
 						btn.data("href", response.substring(7, response.length+1));
 					} else {
 						alert(response);
-						$("#resume-label").html("<i class='fas fa-upload'></i> Upload Resume");
+						$("#resume-label").html("<i class='fas fa-upload icon-text'></i><div class='upload-text'>Resume</div>");
 					}
 					
 				}
@@ -131,7 +144,7 @@ require_once "connect.php";
 	    });
 
 	    $("#upload-cv").on('change', function() {
-	    	$("#cv-label").html("<i class='fas fa-spin fa-spinner'></i> Uploading...");
+	    	$("#cv-label").html("<i class='fas fa-spin fa-spinner icon-text'></i><div class='upload-text'>...</div>");
 
 			var formData = new FormData();
 	    	var fileInput = document.getElementById("upload-cv");
@@ -152,16 +165,23 @@ require_once "connect.php";
 		        processData: false,
 
 				success: function(response) {
-					if(response == "success") {
-						var btn = $("#cv-btn");
+					if(response.substring(0,7) == "success") {
+						var btn = $("#cv-label");
 						btn.addClass("upload-success");
-						btn.html("<i class='fas fa-check'></i> View CV");
+						btn.html("<i class='fas fa-check icon-text'></i><div class='upload-text'>CV</div>");
+
+						// check if both have been uploaded
+						cv_uploaded = 1;
+						if(resume_uploaded && cv_uploaded) {
+							$("#upload-submit").fadeIn();
+							resume_uploaded = cv_uploaded = 0;
+						}
 
 						// Set location to the newly uploaded file
 						btn.data("href", response.substring(7, response.length+1));
 					} else {
 						alert(response);
-						$("#cv-label").html("<i class='fas fa-upload'></i> Upload CV");
+						$("#cv-label").html("<i class='fas fa-upload icon-text'></i><div class='upload-text'>CV</div>");
 					}
 					
 				}
@@ -204,31 +224,40 @@ require_once "connect.php";
 			<div class="col-sm container" style="margin:0px;padding:0px;">
 				<!-- slide down panel -->
 				<div class="new-item-container">
-					<h3>Add New Application</h3>
+					
 
 					<form enctype="multipart/form-data">
 						<div class="row">
-							<div class="col-sm">
-								Company Name
-								<input type="text" />
+							<div class="col-md-8">
+								<h3>Add New Application</h3>
+								<label for="name">Company Name</label>
+								<input type="text" /><br />
+								
+								<label for="position">Position</label>
+								<input type="text" /><br />
+
+								<label for="submit"></label>
+								<div class="custom-btn btn-green" id="upload-submit">Submit</div>
 							</div>
 							<div class="col-sm">
-								Position
-								<input type="text" />
+								<h3>Upload</h3>
+								<div class="upload-btn btn-blue item-clickable" data-href="#" id="resume-btn">
+									<button id='resume-label'>
+										<i class='fas fa-upload icon-text'></i>
+										<div class='upload-text'>Resume</div>
+									</button>
+									<input type="file" id="upload-resume" name="test"/>
+								</div>
+
+								<div class="upload-btn btn-red item-clickable" data-href="#" id="cv-btn">
+									<button id='cv-label'>
+										<i class='fas fa-upload icon-text'></i>
+										<div class='upload-text'>CV</div>
+									</button>
+									<input type="file" id="upload-cv" name="test"/>
+								</div>
 							</div>
 						</div>
-						<!-- <i class="fas fa-spin fa-spinner"></i> -->
-						<center>
-							<div class="upload-btn btn-blue item-clickable" data-href="#" id="resume-btn">
-								<button id='resume-label'><i class='fas fa-upload'></i> Upload Resume</button>
-								<input type="file" id="upload-resume" name="test"/>
-							</div>
-
-							<div class="upload-btn btn-red item-clickable" data-href="#" id="cv-btn">
-								<button id='cv-label'><i class='fas fa-upload'></i> Upload CV</button>
-								<input type="file" id="upload-cv" name="test"/>
-							</div>
-						</center>
 					</form>
 				</div>
 
