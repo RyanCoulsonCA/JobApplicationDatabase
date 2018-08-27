@@ -11,8 +11,8 @@ body {
 	margin: 0px;
 	padding: 0px;
 
-	background: #252525;
-	color: white;
+	background: rgba(37, 37, 37, 1);;
+	color: rgba(255, 255, 255, 1);;
 	font-family: 'Open Sans';
 	font-weight: 300;
 	font-size: 15px;
@@ -25,8 +25,8 @@ body {
 	width: 100%;
 	padding: 0px;
 
-	background: #333333;
-	box-shadow: 0px 2px 5px #000;
+	background: rgba(51, 51, 51, 1);
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 1);
 
 	z-index: 1;
 }
@@ -54,13 +54,13 @@ body {
 }
 .side-container {
 	display: inline-block;
-	background: #222222;
+	background: rgba(34, 34, 34, 1);
 	padding: 30px;
 	text-align: center;
 	width: 20vw;
 	height: 100vh;
 
-	box-shadow: 2px 2px 5px #000;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 1);;
 	z-index: 1;
 }
 .side-container input {
@@ -114,7 +114,7 @@ body {
 }
 .container textarea {
 	background: rgba(0,0,0,0);
-	color: white;
+	color: rgba(255, 255, 255, 1);;
 
 	border: 0px;
 	resize: none;
@@ -181,7 +181,7 @@ body {
 .new-item-container .upload-btn button {
 	border: 0px;
 	background: rgba(0,0,0,0);
-	color: white;
+	color: rgba(255, 255, 255, 1);
 	margin: 0 auto;
 	padding: 10px;
 }
@@ -292,24 +292,24 @@ body {
     display: inline-block;  
     text-align: center;
     font-weight: bold;
-    color: white;
-    text-transform:uppercase;
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
     margin: 5px;
 }
 .custom-btn:hover {
 	cursor: pointer;
 }
 .btn-blue {
-    background-color: #9F8FFF;
+    background-color: rgba(159, 143, 255, 1);;
 }
 .btn-blue:hover {
-    background-color: #7f74cc;
+    background-color: rgba(127, 116, 204, 1);;
 }
 .btn-red {
-    background-color: #FE816D;
+    background-color: rgba(254, 132, 109, 1);;
 }
 .btn-red:hover {
-    background-color: #c66859;
+    background-color: rgba(198, 104, 89, 1);
 }
 .btn-green {
 	background-color: rgba(0, 155, 0, 1);
