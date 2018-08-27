@@ -11,3 +11,4 @@ error_log
 sftp-config.json
 uploadfile.php
 resources/usercontent/*
+submitapp.php

@@ -150,7 +150,7 @@ require_once "connect.php";
 	    	var fileInput = document.getElementById("upload-cv");
 	    	var file = fileInput.files[0];
 	    	formData.append('file', file);
-	    	formData.append('type', 'cv')
+	    	formData.append('type', 'cv');
 
 			$.ajax({
 			    // Your server script to process the upload
@@ -186,6 +186,27 @@ require_once "connect.php";
 					
 				}
 			});
+	    });
+
+	    $("#upload-submit").click(function() {
+	    	var resumeFile = $("#resume-label").data("href");
+	    	var cvFile = $("#cv-label").data("href");
+	    	var appName = $("#app-name").val();
+	    	var appPos = $("#app-pos").val();
+
+	    	$.ajax({
+	    		type: "POST",
+	    		url: "submitapp.php",
+	    		data: {'submit': true, 'app-name': appName, 'app-pos': appPos,
+	    				'app-res': resumeFile, 'app-cv': cvFile},
+	    		success: function(response) {
+	    			if(response.length > 0) {
+	    				alert(response);
+	    			} else {
+	    				window.location = "index.php";
+	    			}
+	    		}
+	    	});
 	    });
 	});
 	</script>
@@ -231,10 +252,10 @@ require_once "connect.php";
 							<div class="col-md-8">
 								<h3>Add New Application</h3>
 								<label for="name">Company Name</label>
-								<input type="text" /><br />
+								<input type="text" id="app-name" /><br />
 								
 								<label for="position">Position</label>
-								<input type="text" /><br />
+								<input type="text" id="app-pos" /><br />
 
 								<label for="submit"></label>
 								<div class="custom-btn btn-green" id="upload-submit">Submit</div>
@@ -246,7 +267,7 @@ require_once "connect.php";
 										<i class='fas fa-upload icon-text'></i>
 										<div class='upload-text'>Resume</div>
 									</button>
-									<input type="file" id="upload-resume" name="test"/>
+									<input type="file" id="upload-resume" name="app-res"/>
 								</div>
 
 								<div class="upload-btn btn-red item-clickable" data-href="#" id="cv-btn">
@@ -254,7 +275,7 @@ require_once "connect.php";
 										<i class='fas fa-upload icon-text'></i>
 										<div class='upload-text'>CV</div>
 									</button>
-									<input type="file" id="upload-cv" name="test"/>
+									<input type="file" id="upload-cv" name="app-cv"/>
 								</div>
 							</div>
 						</div>
