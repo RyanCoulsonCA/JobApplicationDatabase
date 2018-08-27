@@ -26,24 +26,12 @@ $appInfo = mysql_fetch_object($getApp);
 	</head>
 
 	<script>
-
-/*
-	$(document).ready(function() {
-		$('textarea').keypress(function () {
-		    setTimeout(function() {
-		    	$.ajax({
-			    	type: "POST",
-			        url: "../../savecomment.php",
-			        data: { id: <?=$id?>, body: $(this).val() },
-				    success: function(response) {
-				        console.log(response);
-				    }
-				});
-		    }, 200);
-		});		
-	});
-*/
 	$(document).ready(function(){
+	    $(".item-clickable").click(function() {
+	        window.open($(this).data("href"), "_blank");
+	        //window.location = $(this).data("href");
+	    });
+
 		var timerId = 0;
 		$('textarea').focus(function() {
 		    timerId = setInterval(function(){ 
@@ -97,10 +85,10 @@ $appInfo = mysql_fetch_object($getApp);
 				<div class="title-text">Application Date</div>
 				<h4><?=date("l, F t, Y", $appInfo->timestamp)?></h4>
 
-				<div class="title-text">Download</div>
+				<div class="title-text">View</div>
 				<div class="row">
-					<div class="col-sm custom-btn btn-red">CV</div>
-					<div class="col-sm custom-btn btn-blue">Resume</div>
+					<div class="col-sm custom-btn btn-red item-clickable" data-href="http://ryan-coulson.com/JobApplicationDatabase/<?=$appInfo->cv?>">CV</div>
+					<div class="col-sm custom-btn btn-blue item-clickable" data-href="http://ryan-coulson.com/JobApplicationDatabase/<?=$appInfo->resume?>">Resume</div>
 				</div>
 			</div>
 
