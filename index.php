@@ -1,5 +1,13 @@
 <?php
 require_once "connect.php";
+
+if(isset($_GET['key'])) {
+	if($_GET['key'] != "dMb8rvHgC4wDQVF") {
+		die("Not authorized");
+	}
+} else {
+	die("Not authorized");
+}
 ?>
 
 <html lang="en-US">
@@ -203,7 +211,7 @@ require_once "connect.php";
 	    			if(response.length > 0) {
 	    				alert(response);
 	    			} else {
-	    				window.location = "index.php";
+	    				window.location = "index.php?key=dMb8rvHgC4wDQVF";
 	    			}
 	    		}
 	    	});
@@ -217,6 +225,7 @@ require_once "connect.php";
 		<div class="top-navigation">
 			<img src="resources/media/ryan-coulson-logo3.png" />
 			<div class="nav-btn" id="add-item"><i class="fa fa-file"></i>Add New</div>
+			<div class="nav-btn item-clickable" style="background: rgb(100,40,40);" data-href="https://www.uoftengcareerportal.ca/myAccount/dashboard.htm">Portal</div>
 		</div>
 
 		
@@ -245,9 +254,8 @@ require_once "connect.php";
 			<div class="col-sm container" style="margin:0px;padding:0px;">
 				<!-- slide down panel -->
 				<div class="new-item-container">
-					
 
-					<form enctype="multipart/form-data">
+					<form enctype="multipart/form-data" >
 						<div class="row">
 							<div class="col-md-8">
 								<h3>Add New Application</h3>
