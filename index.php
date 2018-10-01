@@ -24,6 +24,10 @@ if(isset($_GET['key'])) {
 		<!-- jQuery -->
 		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
 
 		<!-- fort awesome icons -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -216,6 +220,12 @@ if(isset($_GET['key'])) {
 	    		}
 	    	});
 	    });
+
+		var positions = ["Software Developer", "Software Engineer", "Web Developer", "Full Stack Developer"];
+
+	    $("#autofill-pos").autocomplete({
+	    	source: positions
+	    });
 	});
 	</script>
 	</head>
@@ -236,18 +246,19 @@ if(isset($_GET['key'])) {
 				<input type="text" name="query" id="filter" placeholder="Enter Query" autocomplete="off" />
 
 				<h3>Position Filter</h3>
-				<div class="qs-option">
-					<span class="qs-position">All</span>
-					<div class="qs-number"></div>
-				</div>
-				<div class="qs-option">
-					<span class="qs-position">Software Engineering Intern</span>
-					<div class="qs-number"></div>
-				</div>
-				<div class="qs-option">
-					<span class="qs-position">Graphic Design Intern</span>
-					<span class="qs-number"></span>
-				</div>
+
+				<?php
+				$options = array("All", "Software Developer", "Software Engineer", "Website Developer", "Full Stack Developer");
+
+				foreach($options as $option) {
+					echo "
+					<div class='qs-option'>
+						<span class='qs-position'>$option</span>
+						<div class='qs-number'></div>
+					</div>
+					";
+				}
+				?>
 			</div>
 
 			<!-- main container -->
@@ -263,7 +274,7 @@ if(isset($_GET['key'])) {
 								<input type="text" id="app-name" /><br />
 								
 								<label for="position">Position</label>
-								<input type="text" id="app-pos" /><br />
+								<input type="text" id="app-pos autofill-pos" /><br />
 
 								<label for="submit"></label>
 								<div class="custom-btn btn-green" id="upload-submit">Submit</div>
