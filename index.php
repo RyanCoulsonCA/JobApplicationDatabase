@@ -108,7 +108,7 @@ if(isset($_GET['key'])) {
 	    // BEGIN UPLOADING
 	    var resume_uploaded, cv_uploaded;
 
-	    $("#upload-submit").hide();
+	    //$("#upload-submit").hide();
 
 	    $("#upload-resume").on('change', function() {
 	    	$("#resume-label").html("<i class='fas fa-spin fa-spinner icon-text'></i><div class='upload-text'>...</div>");
@@ -223,7 +223,7 @@ if(isset($_GET['key'])) {
 
 		var positions = ["Software Developer", "Software Engineer", "Web Developer", "Full Stack Developer"];
 
-	    $("#autofill-pos").autocomplete({
+	    $(".autofill-pos").autocomplete({
 	    	source: positions
 	    });
 	});
@@ -266,15 +266,15 @@ if(isset($_GET['key'])) {
 				<!-- slide down panel -->
 				<div class="new-item-container">
 
-					<form enctype="multipart/form-data" >
+					<form action="" enctype="multipart/form-data" >
 						<div class="row">
 							<div class="col-md-8">
 								<h3>Add New Application</h3>
 								<label for="name">Company Name</label>
-								<input type="text" id="app-name" /><br />
+								<input type="text" id="app-name" autocomplete="off" /><br />
 								
 								<label for="position">Position</label>
-								<input type="text" id="app-pos autofill-pos" /><br />
+								<input type="text" class="autofill-pos" id="app-pos" autocomplete="off" /><br />
 
 								<label for="submit"></label>
 								<div class="custom-btn btn-green" id="upload-submit">Submit</div>
@@ -286,7 +286,7 @@ if(isset($_GET['key'])) {
 										<i class='fas fa-upload icon-text'></i>
 										<div class='upload-text'>Resume</div>
 									</button>
-									<input type="file" id="upload-resume" name="app-res"/>
+									<input type="file" id="upload-resume" value="none" name="app-res"/>
 								</div>
 
 								<div class="upload-btn btn-red item-clickable" data-href="#" id="cv-btn">

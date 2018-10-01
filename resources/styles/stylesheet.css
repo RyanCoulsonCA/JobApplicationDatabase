@@ -325,6 +325,18 @@ body {
 	padding: 10px;
 }
 
+.ui-autocomplete {
+    background: #4a4a4a;
+    border-radius: 0px;
+    width: 30%;
+}
+.ui-complete ui {
+	list-style-type: none;
+}
+.ui-autocomplete.source:hover {
+    background: red;
+}
+
 @media (max-width: 1600px) {
 	/* if the float is going to be messed up, there's
 	no point in showing it, it's only quality of life */
