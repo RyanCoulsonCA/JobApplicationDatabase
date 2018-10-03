@@ -331,7 +331,7 @@ if(isset($_GET['key'])) {
 							<td class='col-sm-2 job-center'>".date("m/d/Y", $appInfo->timestamp)."</td>
 					";
 
-					if($appInfo->complete) {
+					if($appInfo->cv && $appInfo->resume) {
 						echo "
 							<td class='col-sm-1 job-complete'><i class='fa fa-check'></i></td>
 						";					
