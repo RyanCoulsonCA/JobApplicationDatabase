@@ -95,6 +95,13 @@ body {
 	margin-top: 10px;
 	margin-bottom: 30px;
 }
+.side-container a {
+	font-weight: 300;
+	text-transform: uppercase;
+	color: rgba(80,80,80,1);
+	font-size: 12px;
+	margin: 10px;
+}
 .container {
 	display: inline-block;
 	max-height: 85vh;

@@ -157,7 +157,7 @@ $appInfo = mysql_fetch_object($getApp);
 
 		<!-- top navigation -->
 		<div class="top-navigation">
-			<a href="../../index.php?key=dMb8rvHgC4wDQVF"><img src="../../resources/media/ryan-coulson-logo3.png" /></a>
+			<a href="../../index.php?key=<?=$_PRIVATE_KEY?>"><img src="../../resources/media/ryan-coulson-logo3.png" /></a>
 			<div class="nav-btn"><i class="fa fa-file"></i>Add New</div>
 			<div class="nav-btn clickable" style="background: rgb(100,40,40);" data-href="https://portal.engineering.utoronto.ca/weblogin/sites/apsc/main.asp?Page=Main"> Portal</div>
 			
@@ -205,6 +205,8 @@ $appInfo = mysql_fetch_object($getApp);
 					<?php } ?>
 					</form>
 				</div>
+				<br />
+				<a href="../../index.php?key=<?=$_PRIVATE_KEY?>&task=archive&id=<?=$id?>">Mark as Archived</a>
 			</div>
 
 
