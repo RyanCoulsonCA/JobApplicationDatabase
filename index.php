@@ -2,7 +2,7 @@
 require_once "connect.php";
 
 if(isset($_GET['key'])) {
-	if($_GET['key'] != "dMb8rvHgC4wDQVF") {
+	if($_GET['key'] != $_PRIVATE_KEY) {
 		die("Not authorized");
 	}
 } else {
