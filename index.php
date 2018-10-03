@@ -257,6 +257,7 @@ if(isset($_GET['key'])) {
 						<div class='qs-number'></div>
 					</div>
 					";
+
 				}
 				?>
 			</div>
@@ -281,7 +282,7 @@ if(isset($_GET['key'])) {
 							</div>
 							<div class="col-sm">
 								<h3>Upload</h3>
-								<div class="upload-btn btn-blue item-clickable" data-href="#" id="resume-btn">
+								<div class="upload-btn btn-blue item-clickable" style="width:80px;" data-href="#" id="resume-btn">
 									<button id='resume-label'>
 										<i class='fas fa-upload icon-text'></i>
 										<div class='upload-text'>Resume</div>
@@ -289,7 +290,7 @@ if(isset($_GET['key'])) {
 									<input type="file" id="upload-resume" value="none" name="app-res"/>
 								</div>
 
-								<div class="upload-btn btn-red item-clickable" data-href="#" id="cv-btn">
+								<div class="upload-btn btn-red item-clickable" style="width:80px;" data-href="#" id="cv-btn">
 									<button id='cv-label'>
 										<i class='fas fa-upload icon-text'></i>
 										<div class='upload-text'>CV</div>
